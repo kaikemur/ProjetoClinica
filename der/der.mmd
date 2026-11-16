@@ -1,0 +1,30 @@
+erDiagram
+    USUARIOS {
+        int id PK
+        varchar nome
+        char cpf UK
+        varchar senha_hash
+    }
+    RESPONSAVEIS {
+        int id PK
+        varchar nome
+        char cpf UK
+        varchar email
+        varchar telefone
+    }
+    CRIANCAS {
+        int id PK
+        varchar nome
+        date data_nascimento
+        int responsavel_id FK
+    }
+    ATENDIMENTOS {
+        int id PK
+        int crianca_id FK
+        date data_atendimento
+        time horario
+        varchar motivo
+        varchar situacao
+    }
+    RESPONSAVEIS ||--o{ CRIANCAS : responsavel
+    CRIANCAS ||--o{ ATENDIMENTOS : atendimentos
